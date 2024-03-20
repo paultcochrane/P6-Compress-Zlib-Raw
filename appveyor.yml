@@ -3,7 +3,6 @@ os: Visual Studio 2015
 platform: x64
 
 install:
-  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
   - choco install strawberryperl
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
   - curl https://rakubrew.org/install-on-cmd.bat -o install-on-cmd.bat && install-on-cmd.bat
