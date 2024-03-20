@@ -8,7 +8,7 @@ sub find-lib {
     unless $lib {
         if $*VM.config<dll> ~~ /dll/ {
             # we're on windows, different library name
-            $lib = ~(%?RESOURCES{"zlib1.dll"});
+            $lib = %?RESOURCES<zlib1.dll>.IO.absolute;
         } elsif $*VM.config<dll> ~~ /so$/ {
             $lib = 'libz.so.1';
         } elsif $*VM.config<dll> ~~ /dylib$/ {
