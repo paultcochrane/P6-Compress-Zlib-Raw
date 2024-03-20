@@ -12,7 +12,7 @@ install:
   - rakubrew download
   - rakubrew build zef
   - cd %APPVEYOR_BUILD_FOLDER%
-  - zef --verbose --depsonly install .
+  - zef --verbose --deps-only install .
 
 build: off
 
