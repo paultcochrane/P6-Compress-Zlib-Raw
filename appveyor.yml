@@ -14,6 +14,7 @@ install:
 build: off
 
 test_script:
+  - SET PATH=C:\Strawberry\perl\bin;%PATH%
   - prove -v -e "raku -Ilib" t/
 
 shallow_clone: true
