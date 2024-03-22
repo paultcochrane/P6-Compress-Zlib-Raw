@@ -3,8 +3,6 @@ image: Visual Studio 2022
 platform: x64
 
 install:
-  - if not exist "C:\Strawberry" choco install strawberryperl -y
-  - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
   - curl https://rakubrew.org/install-on-cmd.bat -o install-on-cmd.bat && install-on-cmd.bat
   - SET PATH=C:\rakubrew\bin;%PATH%
   - 'FOR /F "delims=" %%i IN (''rakubrew home'') DO SET PATH=%%i/shims;%PATH%'
@@ -20,5 +18,5 @@ test_script:
 
 shallow_clone: true
 
-cache:
-  - 'C:\Strawberry'
+  # cache:
+  #   - 'C:\Strawberry'
