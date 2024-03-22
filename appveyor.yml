@@ -5,7 +5,8 @@ platform: x64
 install:
   - curl https://rakubrew.org/install-on-cmd.bat -o install-on-cmd.bat && install-on-cmd.bat
   - SET PATH=C:\rakubrew\bin;%PATH%
-  - 'FOR /F "delims=" %%i IN (''rakubrew home'') DO SET PATH=%%i/shims;%PATH%'
+    # - 'FOR /F "delims=" %%i IN (''rakubrew home'') DO SET PATH=%%i/shims;%PATH%'
+  - SET PATH=C:\rakubrew\shims;%PATH%
   - rakubrew mode shim
   - rakubrew download
   - rakubrew build zef
