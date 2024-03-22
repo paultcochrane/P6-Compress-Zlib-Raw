@@ -1,21 +1,24 @@
-os: Visual Studio 2015
+image: Visual Studio 2022
 
 platform: x64
 
 install:
-  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
-  - choco install strawberryperl
+  - if not exist "C:\Strawberry" choco install strawberryperl -y
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
-  - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
-  - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
-  - rakudobrew build moar 2016.03
-  - rakudobrew build zef
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - zef --verbose --depsonly install .
+  - curl https://rakubrew.org/install-on-cmd.bat -o install-on-cmd.bat && install-on-cmd.bat
+  - SET PATH=C:\rakubrew\bin;%PATH%
+  - 'FOR /F "delims=" %%i IN (''rakubrew home'') DO SET PATH=%%i/shims;%PATH%'
+  - rakubrew mode shim
+  - rakubrew download
+  - rakubrew build zef
+  - zef --verbose --deps-only install .
 
 build: off
 
 test_script:
-  - prove -v -e "perl6 -Ilib" t/
+  - prove -v -e "raku -Ilib" t/
 
 shallow_clone: true
+
+cache:
+  - 'C:\Strawberry'
