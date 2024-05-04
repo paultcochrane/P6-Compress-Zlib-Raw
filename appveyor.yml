@@ -9,12 +9,12 @@ install:
   - rakubrew mode shim
   - rakubrew download
   - rakubrew build zef
-  - zef --verbose --deps-only install .
+  - zef --verbose install .
 
 build: off
 
 test_script:
   - SET PATH=C:\Strawberry\perl\bin;%PATH%
-  - prove -v -e "raku -Ilib" t/
+  - prove -v -e "raku -I." t/
 
 shallow_clone: true
